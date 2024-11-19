@@ -2,18 +2,39 @@
 
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 
 <div class="flex justify-between bg-white p-4 w-5/5 h-24 bg-gray-500  shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
+    <button popovertarget="botones-paginas" class="text-3xl">🧱</button>
     <h1 class="text-3xl">Cool Store🛍️</h1>
     <h1 class="text-5xl">🛒</h1>
+    <div popover id="botones-paginas">
+        <ul>
+            <li>
+                <a href="sports.html">Sports</a>
+            </li>
+            <li>
+                <a href="news.html">News</a>
+            </li>   
+            <li>
+                <a href="finance.html">Finance</a>
+            </li>
+            <li>
+                <a href="technology.html">Technology</a>
+            </li>
+            <li>
+                <a href="entertainment.html">Entertainment</a>
+            </li>
+        </ul>
+    </div>
 </div>
-<contenedor-articulos class="grid grid-cols-3 gap-4 mx-auto my-10 max-w-7xl flex-col items-center text-center "></contenedor-articulos>
+<contenedor-articulos class="grid grid-cols-3 mx-auto my-10 max-w-7xl flex-col items-center text-center "></contenedor-articulos>
 <template>
-    <div class="grid-drones w-96 border-solid border-2">
-        <div class="shadow-xl">
-            <img class="imagen rounded-t-xl" src="" alt="">
+    <div class="grid-drones">
+        <div>
+            <img class="imagen rounded-xl w-52 mx-auto" src="" alt="">
             <a class="nombre" href="">nombre</a>
             <h1 class="rating">rating</h1>
             <h1 class="fecha">fecha</h1>
