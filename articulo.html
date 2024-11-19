@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<custom-article>
+    <div class="h-screen flex items-center justify-center flex-col">
+        <img class="imagen w-96" src="" alt="">
+        <h1 class="Descricion text-4xl">Descripcion</h1>
+        <h1 class="precio text-4xl">Precio.💶 : </h1>
+        <h1 class="caracteristicas text-4xl">Caracteristicas 📲</h1>
+        <h1 class="color text-4xl">Color🎨 : </h1>
+        <h1 class="camara text-4xl">Camara📷 : </h1>
+        <h1 class="flight-time text-4xl">Filght time✈️ : </h1>
+        <h1 class="range text-4xl">Range🪙 : </h1>
+    </div>
+</custom-article>
+<script>
+    const getId = () => {
+        const searchParams = new URLSearchParams(location.search.slice(1));
+        return Number(searchParams.get('id'));
+    }
+
+    class CustomArticle extends HTMLElement {
+        constructor() {
+            super();
+            this.id = getId();
+        }
+        connectedCallback() {
+            this.generarArticulos();
+        }
+
+        async generarArticulos() {
+            try {
+                const response = await fetch('https://products-foniuhqsba-uc.a.run.app/Drones');
+                if (!response.ok) {
+                    throw new Error('Error al cargar los articulos');
+                }
+                const articles = await response.json();
+                this.mostrarNoticia(articles)
+            } catch (error) {
+                console.error('Error', error);
+            }
+        }
+
+        mostrarNoticia(articles) { // Cambié el parámetro a `articles` porque parece que es una lista
+            const precio = this.querySelector('.precio');
+            const imagen = this.querySelector('.imagen');
+            const color = this.querySelector('.color');
+            const camara = this.querySelector('.camara');
+            const flight_time = this.querySelector('.flight-time');
+            const range = this.querySelector('.range');
+            const id = getId(); // Obtiene el ID de la URL
+            console.log(id);
+            // Usa `find` para buscar el artículo con el ID deseado
+            const selectedArticle = articles.find((item) => item.id === id);
+
+
+            if (selectedArticle) {
+                console.log("Artículo encontrado:", selectedArticle);
+                // Aquí puedes renderizar o procesar el artículo encontrado
+                imagen.src = selectedArticle.image
+                precio.innerHTML += selectedArticle.price;
+                color.innerHTML += selectedArticle.features[0].value;
+                camara.innerHTML += selectedArticle.features[1].value;
+                flight_time.innerHTML += selectedArticle.features[2].value;
+                range.innerHTML += selectedArticle.features[3].value;
+            } else {
+                console.log(`No se encontró ningún artículo con ID: ${id}`);
+            }
+        }
+
+    }
+
+    customElements.define('custom-article', CustomArticle);
+</script>
+
+</html>
