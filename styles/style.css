@@ -8,3 +8,14 @@
     top: 40px;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
+
+#colores:popover-open{
+    width: 9vw;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: absolute;
+    inset: unset;
+    left: 120px;
+    top: 60px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
