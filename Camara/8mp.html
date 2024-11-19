@@ -2,13 +2,13 @@
 
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 
 <div class="flex justify-between bg-white p-4 w-5/5 h-24 bg-gray-500  shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
     <button popovertarget="botones-paginas" class="text-3xl">🧱</button>
-    <a href="coolStore.html" class="text-3xl">Cool Store🛍️</a>
+    <a href="../coolStore.html" class="text-3xl">Cool Store🛍️</a>
     <h1 class="text-5xl">🛒</h1>
     <div popover id="botones-paginas">
         <ul>
@@ -17,19 +17,19 @@
                 <div popover id="colores">
                     <ul>
                         <li>
-                            <a href="Colores/colorBlack.html">Black</a>
+                            <a href="../Colores/colorBlack.html">Black</a>
                         </li>
                         <li>
-                            <a href="Colores/colorGray.html">Gray</a>
+                            <a href="../Colores/colorGray.html">Gray</a>
                         </li>
                         <li>
-                            <a href="Colores/colorWhite.html">White</a>
+                            <a href="../Colores/colorWhite.html">White</a>
                         </li>
                         <li>
-                            <a href="Colores/colorOrange.html">Orange</a>
+                            <a href="../Colores/colorOrange.html">Orange</a>
                         </li>
                         <li>
-                            <a href="Colores/colorBlue.html">Blue</a>
+                            <a href="../Colores/colorBlue.html">Blue</a>
                         </li>
                     </ul>
                 </div>
@@ -39,48 +39,40 @@
                 <div popover id="camaras">
                     <ul>
                         <li>
-                            <a href="Camara/5mp.html">5MP</a>
+                            <a href="5mp.html">5MP</a>
                         </li>
                         <li>
-                            <a href="Camara/8mp.html">8MP</a>
+                            <a href="8mp.html">8MP</a>
                         </li>
                         <li>
-                            <a href="Camara/12mp.html">12MP</a>
+                            <a href="12mp.html">12MP</a>
                         </li>
                         <li>
-                            <a href="Camara/13mp.html">13MP</a>
+                            <a href="13mp.html">13MP</a>
                         </li>
                         <li>
-                            <a href="Camara/14mp.html">14MP</a>
+                            <a href="14mp.html">14MP</a>
                         </li>
                         <li>
-                            <a href="Camara/16mp.html">16MP</a>
+                            <a href="16mp.html">16MP</a>
                         </li>
                         <li>
-                            <a href="Camara/20mp.html">20MP</a>
+                            <a href="20mp.html">20MP</a>
                         </li>
                         <li>
-                            <a href="Camara/21mp.html">21MP</a>
+                            <a href="21mp.html">21MP</a>
                         </li>
                         <li>
-                            <a href="Camara/48mp.html">48MP</a>
+                            <a href="48mp.html">48MP</a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li>
-                <a href="finance.html">Finance</a>
-            </li>
-            <li>
-                <a href="technology.html">Technology</a>
-            </li>
-            <li>
-                <a href="entertainment.html">Entertainment</a>
-            </li>
         </ul>
     </div>
 </div>
-<contenedor-articulos class="grid grid-cols-3 mx-auto my-10 max-w-7xl flex-col items-center text-center "></contenedor-articulos>
+<contenedor-articulos
+    class="grid grid-cols-3 mx-auto my-10 max-w-7xl flex-col items-center text-center "></contenedor-articulos>
 <template>
     <div class="grid-drones">
         <div>
@@ -95,50 +87,52 @@
 
 </html>
 <script>
-    class Drones extends HTMLElement{
-        constructor(){
+    class Drones extends HTMLElement {
+        constructor() {
             super();
         }
 
-        connectedCallback(){
+        connectedCallback() {
             this.mostrarArticulos();
         }
 
-        async mostrarArticulos(){
-            try{
+        async mostrarArticulos() {
+            try {
                 const response = await fetch("https://products-foniuhqsba-uc.a.run.app/Drones");
-                if(!response.ok){
+                if (!response.ok) {
                     throw new Error('Error al cargar los drones');
                 }
                 const articles = await response.json();
                 // console.log(articles)
                 this.render(articles);
-            }catch(error){
+            } catch (error) {
                 console.log(error)
             }
         }
 
-        render(articles){
+        render(articles) {
             const template = document.querySelector('template')
             this.innerHTML = '';
 
             articles.forEach(element => {
-                console.log(element)
-                const contenido = document.importNode(template.content, true);
-                const imagen = contenido.querySelector('.imagen');
-                const nombre = contenido.querySelector('.nombre'); 
-                const rating = contenido.querySelector('.rating');
-                const fecha = contenido.querySelector('.fecha');
-                const precio = contenido.querySelector('.precio');
+                if (element.features[1].value === '8MP') {
+                    console.log(element)
+                    const contenido = document.importNode(template.content, true);
+                    const imagen = contenido.querySelector('.imagen');
+                    const nombre = contenido.querySelector('.nombre');
+                    const rating = contenido.querySelector('.rating');
+                    const fecha = contenido.querySelector('.fecha');
+                    const precio = contenido.querySelector('.precio');
 
-                imagen.src = element.image;
-                nombre.textContent = element.title;
-                nombre.href = `articulo.html?id=${element.id}`;
-                rating.textContent = element.rating;
-                fecha.textContent = element.date;
-                precio.textContent = element.price
+                    imagen.src = element.image;
+                    nombre.textContent = element.title;
+                    nombre.href = `../articulo.html?id=${element.id}`;
+                    rating.textContent = element.rating;
+                    fecha.textContent = element.date;
+                    precio.textContent = element.price
 
-                this.appendChild(contenido)
+                    this.appendChild(contenido)
+                }
             });
         }
     }
