@@ -1,2 +1,3 @@
 # Store
 # CoolStore
+# CoolStoreHc
