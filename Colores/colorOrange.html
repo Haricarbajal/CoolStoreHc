@@ -1,92 +1,159 @@
 <html>
 
-<head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../styles/style.css">
-</head>
+<body class="bg-[rgba(255,228,224,0.45)]">
 
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <div
+        class="flex justify-between items-center bg-white p-4 w-full h-24 bg-gray-500 shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
+        <button popovertarget="botones-paginas" class="text-3xl">≡</button>
+        <a href="../coolStore.html" class="text-3xl">Cool Store🛍️</a>
+        <div class="relative inline-block">
+            <h1
+                class="contador absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+                0
+            </h1>
+            <button popovertarget="carrito-compras" class="text-5xl mb-[20px]">🛒</button>
+        </div>
 
-<div class="flex justify-between bg-white p-4 w-5/5 h-24 bg-gray-500  shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
-    <button popovertarget="botones-paginas" class="text-3xl">🧱</button>
-    <a href="../coolStore.html" class="text-3xl">Cool Store🛍️</a>
-    <h1 class="text-5xl">🛒</h1>
-    <div popover id="botones-paginas">
-        <ul>
-            <li>
-                <button popovertarget="colores">Color</button>
-                <div popover id="colores">
-                    <ul>
-                        <li>
-                            <a href="colorBlack.html">Black</a>
-                        </li>
-                        <li>
-                            <a href="colorGray.html">Gray</a>
-                        </li>
-                        <li>
-                            <a href="colorWhite.html">White</a>
-                        </li>
-                        <li>
-                            <a href="colorOrange.html">Orange</a>
-                        </li>
-                        <li>
-                            <a href="colorBlue.html">Blue</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <button popovertarget="camaras">Camara</button>
-                <div popover id="camaras">
-                    <ul>
-                        <li>
-                            <a href="../Camara/5mp.html">5MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/8mp.html">8MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/12mp.html">12MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/13mp.html">13MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/14mp.html">14MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/16mp.html">16MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/20mp.html">20MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/21mp.html">21MP</a>
-                        </li>
-                        <li>
-                            <a href="../Camara/48mp.html">48MP</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<contenedor-articulos
-    class="grid grid-cols-3 mx-auto my-10 max-w-7xl flex-col items-center text-center "></contenedor-articulos>
-<template>
-    <div class="grid-drones">
-        <div>
-            <img class="imagen rounded-xl w-52 mx-auto" src="" alt="">
-            <a class="nombre" href="">nombre</a>
-            <h1 class="rating">rating</h1>
-            <h1 class="fecha">fecha</h1>
-            <h1 class="precio">precio</h1>
+        <div popover id="carrito-compras" class="max-h-44 overflow-y-scroll">
+            <custom-carrito>
+                <template id="template-carrito">
+                    <li class="list-none">
+                        <div class="flex items-center bg-gray-100 p-4 border rounded-md">
+                            <!-- Imagen a la izquierda -->
+                            <div class="flex-shrink-0">
+                                <img class="imagen-carrito w-24 h-auto object-cover rounded-md"
+                                    src="https://i0.wp.com/viciados.net/wp-content/uploads/2023/05/PlayStation_5_PSP_PS_Vita_2_Console_Portatil_Sony_PS5_2023.webp"
+                                    alt="Producto">
+                            </div>
+
+                            <!-- Contenedor de descripción -->
+                            <div class="contenedor-descripcion flex flex-col justify-between ml-4 w-full">
+                                <!-- Título y precio -->
+                                <div>
+                                    <h1 class="titulo text-lg font-semibold mb-2">Nombre del Producto</h1>
+                                    <h1 class="precio text-sm text-gray-600">Precio: $100.00</h1>
+                                </div>
+
+                                <!-- Botón eliminar -->
+                                <button
+                                    class="boton-eliminar mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+                                    ELIMINAR
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+                <ul id="resultados">
+                    <h1 class="precio-total">Total: </h1>
+                </ul>
+            </custom-carrito>
+        </div>
+        <div popover id="botones-paginas">
+            <ul>
+                <li>
+                    <button popovertarget="colores">Color</button>
+                    <div popover id="colores">
+                        <ul>
+                            <li>
+                                <a href="colorBlack.html">Black</a>
+                            </li>
+                            <li>
+                                <a href="colorGray.html">Gray</a>
+                            </li>
+                            <li>
+                                <a href="colorWhite.html">White</a>
+                            </li>
+                            <li>
+                                <a href="colorOrange.html">Orange</a>
+                            </li>
+                            <li>
+                                <a href="colorBlue.html">Blue</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button popovertarget="camaras">Camara</button>
+                    <div popover id="camaras">
+                        <ul>
+                            <li>
+                                <a href="../Camara/5mp.html">5MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/8mp.html">8MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/12mp.html">12MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/13mp.html">13MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/14mp.html">14MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/16mp.html">16MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/20mp.html">20MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/21mp.html">21MP</a>
+                            </li>
+                            <li>
+                                <a href="../Camara/48mp.html">48MP</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-</template>
+    <div class="relative w-full h-[600px]">
+        <!-- Imagen de fondo -->
+        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+            style="background-image:url('../imagenes/mountain.jpg');"></div>
+
+        <!-- Contenido sobre la imagen -->
+        <div class="relative z-10 w-full h-full flex items-center justify-center p-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white max-w-2xl text-shadow-3d">
+                Somos una tienda especializada en la venta de drones de última generación, accesorios y repuestos para
+                todos los niveles de experiencia
+            </h1>
+        </div>
+    </div>
+
+
+
+
+    <contenedor-articulos class="articulos-grid gap-y-[100px] text-center"></contenedor-articulos>
+    <template id="articulos">
+        <div
+            class="modal border shadow-xl flex flex-col h-full p-6 bg-white bg-[rgba(255,255,255)] backdrop-blur-lg rounded-2xl hover:shadow-2xl transition-shadow duration-300">
+            <div class="h-[220px] flex justify-center items-center overflow-hidden rounded-lg">
+                <img class="imagen w-full h-full object-cover rounded-l60g" src="" alt="">
+            </div>
+            <a class="nombre my-2 text-xl font-semibold text-black hover:text-blue-400 transition-colors"
+                href="">nombre</a>
+            <h1 class="rating my-1 text-sm text-black opacity-80">rating</h1>
+            <h1 class="fecha my-1 text-sm text-black opacity-80">fecha</h1>
+            <h1 class="precio mt-auto mb-4 text-lg font-semibold text-black">precio</h1>
+            <button id=""
+                class="comprar mb-2 self-center bg-blue-500 text-black px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors duration-300">Comprar</button>
+            <!-- <button class="border-2 border-white bg-white bg-opacity-40 text-black hover:bg-opacity-100 rounded-lg px-4 py-2 mt-2 transition-all duration-300">Detalles</button> -->
+        </div>
+    </template>
+</body>
 
 </html>
 <script>
+    const customCard = document.querySelector('custom-carrito');
+    let contador = parseInt(localStorage.getItem("contador") || 0)
+    const numeroAumentar = document.querySelector('.contador');
     class Drones extends HTMLElement {
         constructor() {
             super();
@@ -111,31 +178,140 @@
         }
 
         render(articles) {
-            const template = document.querySelector('template')
+            const template = document.querySelector('#articulos')
             this.innerHTML = '';
 
             articles.forEach(element => {
+                // console.log(element)
+
                 if (element.features[0].value === 'Orange') {
-                    console.log(element)
+
                     const contenido = document.importNode(template.content, true);
                     const imagen = contenido.querySelector('.imagen');
                     const nombre = contenido.querySelector('.nombre');
                     const rating = contenido.querySelector('.rating');
                     const fecha = contenido.querySelector('.fecha');
                     const precio = contenido.querySelector('.precio');
+                    const boton_comprar = contenido.querySelector('.comprar');
 
+
+
+                    boton_comprar.id = element.id;
+                    // console.log(boton_comprar.id)        
                     imagen.src = element.image;
                     nombre.textContent = element.title;
                     nombre.href = `../articulo.html?id=${element.id}`;
                     rating.textContent = element.rating;
                     fecha.textContent = element.date;
                     precio.textContent = element.price
+                    numeroAumentar.textContent = contador
 
                     this.appendChild(contenido)
+
+                    boton_comprar.addEventListener("click", () => {
+                        // console.log(boton_comprar.id)
+                        contador++;
+                        localStorage.setItem('contador', contador)
+                        numeroAumentar.textContent = contador;
+                        let productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+                        articles.forEach(element => {
+                            if (element.id == boton_comprar.id) {
+                                // Agregar el producto al array
+                                productos.push({
+                                    id: element.id,
+                                    image: element.image,
+                                    title: element.title,
+                                    price: element.price
+                                });
+                            }
+                        });
+                        localStorage.setItem("productos", JSON.stringify(productos));
+                        console.log("se agrego el dron");
+                        console.log(localStorage.getItem("productos"))
+
+                        console.log(productos)
+
+                        if (customCard) {
+                            customCard.añadirPopover();
+                        }
+                    })
                 }
             });
         }
     }
 
     customElements.define("contenedor-articulos", Drones)
+
+
+    class Carrito extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.añadirPopover();
+        }
+
+        añadirPopover() {
+            const elementos = JSON.parse(localStorage.getItem("productos") || "[]");
+            const resultados = this.querySelector('#resultados');
+            resultados.innerHTML = '';  // Limpiar el carrito antes de añadir los productos.
+
+            const template = this.querySelector("#template-carrito").content;
+
+            elementos.forEach(elemento => {
+                const lista = template.querySelector("li").cloneNode(true);
+                lista.querySelector('.imagen-carrito').src = elemento.image;
+                lista.querySelector('.titulo').textContent = elemento.title;
+                lista.querySelector('.precio').textContent = elemento.price;
+
+                // Asignar un `data-id` al botón de eliminar para poder identificar el producto
+                const botonEliminar = lista.querySelector('.boton-eliminar');
+                botonEliminar.setAttribute('data-id', elemento.id);
+
+                // Añadir el producto al carrito en el DOM
+                resultados.appendChild(lista);
+
+                // Agregar el evento de eliminación para este botón de eliminar
+                botonEliminar.addEventListener("click", (event) => {
+                    contador--;
+                    if (contador <= 0) {
+                        contador = 0
+                        alert("El carrito esta vacio")
+                    }
+                    numeroAumentar.textContent = contador
+                    localStorage.setItem("contador", contador)
+                    const productoId = event.target.getAttribute('data-id');  // Obtener el ID del producto a eliminar
+                    this.eliminarDelCarrito(productoId, lista);
+                });
+            });
+        }
+
+        eliminarDelCarrito(productoId, lista) {
+            let productos = JSON.parse(localStorage.getItem("productos") || "[]");
+
+            for (let i = 0; i < productos.length; i++) {
+                if (productos[i].id == productoId) {
+                    productos.splice(i, 1);
+                    console.log("Producto eliminado del array");
+                    break;
+                }
+            }
+
+
+            localStorage.setItem("productos", JSON.stringify(productos));
+
+            // Elimina el producto del DOM
+            lista.remove();
+
+
+
+            console.log("Producto eliminado con éxito");
+        }
+    }
+
+    customElements.define('custom-carrito', Carrito);
+
+
 </script>

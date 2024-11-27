@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Estilizado</title>
+    <!-- Incluyendo Tailwind CSS desde el CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Fondo negro con desenfoque */
+        .bg-blur {
+            background-color: black;
+            filter: blur(8px); /* Desenfoque del fondo */
+        }
+
+        /* Asegurarse de que el contenido no se vea detrás del fondo desenfocado */
+        .blurred-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: black; /* Fondo negro */
+            filter: blur(8px); /* Desenfoque */
+            z-index: -1; /* Colocar el fondo detrás del contenido */
+        }
+
+        /* Animación de deslizamiento y opacidad */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Aplicar la animación al formulario */
+        .form-animate {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Capa de fondo negro con desenfoque -->
+    <div class="blurred-background"></div>
+
+    <!-- Contenido principal del formulario, centrado con Flexbox -->
+    <div class="flex justify-center items-center h-screen relative z-10">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full form-animate">
+            <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Formulario</h2>
+            <form id="myForm">
+                <div class="mb-4">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required
+                        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" required
+                        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required
+                        class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button type="submit"
+                    class="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript para manejar el envío del formulario -->
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault();  // Prevenir el envío del formulario
+            alert("Formulario completado");
+
+            // Limpiar los campos del formulario después de que el usuario vea el alert
+            document.getElementById("myForm").reset();
+        });
+    </script>
+</body>
+
+</html>
