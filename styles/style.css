@@ -63,7 +63,8 @@
 
 @media (max-width: 1020px) {
     .articulos-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        padding: 20px;
     }
 }
 @media (max-width: 768px) {
@@ -115,7 +116,6 @@
         top: 76px;
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
-
     
 
 
@@ -134,16 +134,15 @@
     animation: textMove 1s ease-in-out infinite;  /* Animación para movimiento sutil */
 }
 
-/* Animación para hacer que el texto se mueva ligeramente */
 @keyframes textMove {
     0% {
-        transform: translateY(-5px); /* Inicio del movimiento */
+        transform: translateY(-5px); /*inicio*/
     }
     50% {
-        transform: translateY(5px);  /* Baja un poco el texto para dar la sensación de profundidad */
+        transform: translateY(5px);  /*texto baja*/
     }
     100% {
-        transform: translateY(-5px); /* Regresa al estado original */
+        transform: translateY(-5px); /*restaura su estado*/
     }
 }
 
