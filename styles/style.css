@@ -61,10 +61,10 @@
     padding-top: 12%;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 3000px) {
     .articulos-grid {
         grid-template-columns: 1fr;
-        padding: 20px;
+        padding: 200px;
     }
 }
 @media (max-width: 768px) {
