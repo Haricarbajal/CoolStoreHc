@@ -2,20 +2,44 @@
     <head>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="bg-cover bg-center bg-no-repeat" style="background-image:url('/imagenes/drone.jpg');">
-        <div>
-            <h1 class="absolute top-[3rem] left-[8rem] font-light text-4xl font-sans text-black">🚁DRONES tops</h1>
-            <div class="absolute top-[4rem] right-[8rem] flex gap-14">
-                <a href="#" class="no-underline text-black text-2xl font-sans">Inicio</a>
-                <a href="contacto.html" class="no-underline text-black text-2xl font-sans">Contacto</a>
+    <div class="flex justify-between items-center bg-transparent p-4 w-full h-24 bg-gray-500 shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
+        <a href="contacto.html" class="text-3xl">Contacto</a>
+        <a href="coolStore.html" class="text-3xl">Cool Store🛍️</a>
+    </div>
+    <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('imagenes/fondoIndex.jpg');">
+
+        <!-- Contenedor para el texto y la imagen -->
+        <div class="h-screen flex items-center justify-center space-y-10 sm:space-y-0 sm:space-x-20 sm:flex-row flex-col text-center mx-auto max-w-screen-xl]">
+            <!-- Texto y Botón -->
+            <div class="flex flex-col items-center sm:items-start justify-center">
+                <h1 class="text-6xl font-sans font-medium text-white drop-shadow-lg">Tu tienda de Drones de alta gama</h1>
+                <p class="mt-10 text-white font-sans font-light text-2xl drop-shadow-lg">Disfruta de la mejor calidad en cámara, portabilidad y experiencia</p>
+                
+                <!-- Botón debajo del texto, ahora sin margen manual -->
+                <div class="mt-10 bg-gradient-to-r from-blue-500 to-blue-300 hover:from-blue-600 hover:to-blue-400 sm:py-8 sm:px-20 rounded-full h-14 flex items-center justify-center">
+                    <a href="coolStore.html" class="text-white text-xl font-sans">Ver productos</a>
+                </div>
             </div>
+            
+            <!-- Imagen (Logo) al lado del texto -->
+            <img src="imagenes/doneSinFondo.png" alt="Logo" class="w-96 sm:w-[500px] mt-10 sm:mt-0" id="background">
         </div>
-        <div class="h-screen flex items-center justify-center flex-col">
-            <h1 class="text-6xl font-sans font-medium text-white">Tu tienda de Drones de alta gama</h1>
-            <p class="mt-10 text-white font-sans font-light text-2xl">Disfruta de la mejor calidad en camara, portabilidad y experiencia</p><!--  mt = margin-top -->
-            <div class="ver-productos mt-20 bg-gray-50 sm:py-8 sm:px-20 rounded-full h-14 bg-gradient-to-r from-blue-500 to-blue-100 flex items-center justify-center">
-                <a href="coolStore.html">Ver productos</a>
-            </div>
-        </div>
+        
+
+        <script>
+        document.addEventListener("mousemove", parallax);
+
+        function parallax(e) {
+            var background = document.getElementById('background'); // Obtén el elemento con la imagen de fondo
+            
+            // Calcula el desplazamiento de la imagen en base a la posición del ratón
+            var x = (e.clientX / window.innerWidth) * 30 - 15; // Ajustar el rango de desplazamiento
+            var y = (e.clientY / window.innerHeight) * 30 - 15; // Ajustar el rango de desplazamiento
+            
+            // Aplica el desplazamiento de la imagen con la propiedad CSS 'transform'
+            background.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        </script>
+
     </body>
 </html>

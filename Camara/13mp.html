@@ -4,12 +4,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
-
-
-<div class="flex justify-between bg-white p-4 w-5/5 h-24 bg-gray-500  shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
+<div
+    class="flex justify-between items-center bg-white p-4 w-full h-24 bg-gray-500 shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
     <button popovertarget="botones-paginas" class="text-3xl">🧱</button>
-    <a href="../coolStore.html" class="text-3xl">Cool Store🛍️</a>
-    <h1 class="text-5xl">🛒</h1>
+    <a href="coolStore.html" class="text-3xl">Cool Store🛍️</a>
+    <div class="relative inline-block">
+        <h1
+            class="contador absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+            0
+        </h1>
+        <button popovertarget="carrito-compras" class="text-5xl mb-[20px]">🛒</button>
+    </div>
+    <div popover id="carrito-compras" class="max-h-44 overflow-y-scroll">
+        <custom-carrito>
+            <template id="template-carrito">
+                <li class="list-none">
+                    <div class="flex items-center bg-gray-100 p-4 border rounded-md">
+                        <!-- Imagen a la izquierda -->
+                        <div class="flex-shrink-0">
+                            <img class="imagen-carrito w-24 h-auto object-cover rounded-md"
+                                src="https://i0.wp.com/viciados.net/wp-content/uploads/2023/05/PlayStation_5_PSP_PS_Vita_2_Console_Portatil_Sony_PS5_2023.webp"
+                                alt="Producto">
+                        </div>
+
+                        <!-- Contenedor de descripción -->
+                        <div class="contenedor-descripcion flex flex-col justify-between ml-4 w-full">
+                            <!-- Título y precio -->
+                            <div>
+                                <h1 class="titulo text-lg font-semibold mb-2">Nombre del Producto</h1>
+                                <h1 class="precio text-sm text-gray-600">Precio: $100.00</h1>
+                            </div>
+
+                            <!-- Botón eliminar -->
+                            <button
+                                class="boton-eliminar mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+                                ELIMINAR
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </template>
+            <ul id="resultados"></ul>
+        </custom-carrito>
+    </div>
     <div popover id="botones-paginas">
         <ul>
             <li>
@@ -71,22 +108,26 @@
         </ul>
     </div>
 </div>
-<contenedor-articulos
-    class="grid grid-cols-3 mx-auto my-10 max-w-7xl flex-col items-center text-center "></contenedor-articulos>
-<template>
-    <div class="grid-drones">
-        <div>
-            <img class="imagen rounded-xl w-52 mx-auto" src="" alt="">
-            <a class="nombre" href="">nombre</a>
-            <h1 class="rating">rating</h1>
-            <h1 class="fecha">fecha</h1>
-            <h1 class="precio">precio</h1>
+<contenedor-articulos class="grid grid-cols-3 gap-8 gap-y-[100px] text-center p-[20px]"></contenedor-articulos>
+<template id="articulos">
+    <div class="border  shadow-xl flex flex-col h-full p-4 bg-white rounded-2xl">
+        <div class="h-[200px] flex justify-center items-center overflow-hidden">
+            <img class="imagen w-full h-full object-cover" src="" alt="">
         </div>
+        <a class="nombre my-2 text-xl text-sans" href="">nombre</a>
+        <h1 class="rating my-2">rating</h1>
+        <button class="border-black boder2 bg-white">Detalles</button>
+        <h1 class="fecha my-2">fecha</h1>
+        <h1 class="precio mt-auto mb-2">precio</h1>
+        <button id="" class="comprar mb-2 self-center bg-blue-500 text-white px-4 py-2 rounded">Comprar</button>
     </div>
 </template>
 
 </html>
 <script>
+    const customCard = document.querySelector('custom-carrito');
+    let contador = parseInt(localStorage.getItem("contador") || 0)
+    const numeroAumentar = document.querySelector('.contador');
     class Drones extends HTMLElement {
         constructor() {
             super();
@@ -111,31 +152,134 @@
         }
 
         render(articles) {
-            const template = document.querySelector('template')
+            const template = document.querySelector('#articulos')
             this.innerHTML = '';
 
             articles.forEach(element => {
                 if (element.features[1].value === '13MP') {
-                    console.log(element)
+                    // console.log(element)
                     const contenido = document.importNode(template.content, true);
                     const imagen = contenido.querySelector('.imagen');
                     const nombre = contenido.querySelector('.nombre');
                     const rating = contenido.querySelector('.rating');
                     const fecha = contenido.querySelector('.fecha');
                     const precio = contenido.querySelector('.precio');
+                    const boton_comprar = contenido.querySelector('.comprar');
 
+
+
+                    boton_comprar.id = element.id;
+                    // console.log(boton_comprar.id)        
                     imagen.src = element.image;
                     nombre.textContent = element.title;
                     nombre.href = `../articulo.html?id=${element.id}`;
                     rating.textContent = element.rating;
                     fecha.textContent = element.date;
                     precio.textContent = element.price
+                    numeroAumentar.textContent = contador
 
                     this.appendChild(contenido)
+                    boton_comprar.addEventListener("click", () => {
+                        // console.log(boton_comprar.id)
+                        contador++;
+                        localStorage.setItem('contador', contador)
+                        numeroAumentar.textContent = contador;
+                        let productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+                        articles.forEach(element => {
+                            if (element.id == boton_comprar.id) {
+                                // Agregar el producto al array
+                                productos.push({
+                                    id: element.id,
+                                    image: element.image,
+                                    title: element.title,
+                                    price: element.price
+                                });
+                            }
+                        });
+                        localStorage.setItem("productos", JSON.stringify(productos));
+                        console.log("se agrego el dron");
+                        console.log(localStorage.getItem("productos"))
+
+                        console.log(productos)
+
+                        if (customCard) {
+                            customCard.añadirPopover();
+                        }
+                    })
                 }
             });
         }
     }
 
     customElements.define("contenedor-articulos", Drones)
+    class Carrito extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.añadirPopover();
+        }
+
+        añadirPopover() {
+            const elementos = JSON.parse(localStorage.getItem("productos") || "[]");
+            const resultados = this.querySelector('#resultados');
+            resultados.innerHTML = '';  // Limpiar el carrito antes de añadir los productos.
+
+            const template = this.querySelector("#template-carrito").content;
+
+            elementos.forEach(elemento => {
+                const lista = template.querySelector("li").cloneNode(true);
+                lista.querySelector('.imagen-carrito').src = elemento.image;
+                lista.querySelector('.titulo').textContent = elemento.title;
+                lista.querySelector('.precio').textContent = elemento.price;
+
+                // Asignar un `data-id` al botón de eliminar para poder identificar el producto
+                const botonEliminar = lista.querySelector('.boton-eliminar');
+                botonEliminar.setAttribute('data-id', elemento.id);
+
+                // Añadir el producto al carrito en el DOM
+                resultados.appendChild(lista);
+
+                // Agregar el evento de eliminación para este botón de eliminar
+                botonEliminar.addEventListener("click", (event) => {
+                    contador--;
+                    if (contador < 0) {
+                        contador = 0
+                    }
+                    numeroAumentar.textContent = contador
+                    localStorage.setItem("contador", contador)
+                    const productoId = event.target.getAttribute('data-id');  // Obtener el ID del producto a eliminar
+                    this.eliminarDelCarrito(productoId, lista);
+                });
+            });
+        }
+
+        eliminarDelCarrito(productoId, lista) {
+            let productos = JSON.parse(localStorage.getItem("productos") || "[]");
+
+            for (let i = 0; i < productos.length; i++) {
+                if (productos[i].id == productoId) {
+                    productos.splice(i, 1);
+                    console.log("Producto eliminado del array");
+                    break;
+                }
+            }
+
+
+            localStorage.setItem("productos", JSON.stringify(productos));
+
+            // Elimina el producto del DOM
+            lista.remove();
+
+
+
+            console.log("Producto eliminado con éxito");
+        }
+    }
+
+    customElements.define('custom-carrito', Carrito);
+
+
 </script>

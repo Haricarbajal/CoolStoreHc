@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <!-- Incluir Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Incluir Animate.css para las animaciones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Fondo personalizado */
+        .bg-contact {
+            background-image: url('imagenes/contacto.jpg'); /* Cambia esto a la ruta correcta */
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Sección de contacto con imagen de fondo -->
+    <section class="bg-contact text-white bg-opacity-60 min-h-screen flex items-center justify-center py-12">
+        <div class="text-center max-w-lg px-6">
+            <h1 class="text-4xl font-bold mb-4 animate__animated animate__fadeIn">¡Contáctanos!</h1>
+            <p class="text-lg mb-8 animate__animated animate__fadeIn animate__delay-1s">Estamos aquí para ayudarte. Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con nosotros.</p>
+            <div class="space-y-4">
+                <div class="flex justify-center items-center space-x-2 text-lg">
+                    <i class="fas fa-phone-alt text-2xl"></i>
+                    <p>+34 984 164 267</p>
+                </div>
+                <div class="flex justify-center items-center space-x-2 text-lg">
+                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                    <p>Calle Ficticia 123928292, Madrid</p>
+                </div>
+                <div class="flex justify-center items-center space-x-2 text-lg">
+                    <i class="fas fa-envelope text-2xl"></i>
+                    <p>juanMedina@gmail.co</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estilo de footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; 2024 Todos los derechos reservados. | Diseño por TuNombre</p>
+    </footer>
+
+    <!-- Agregar iconos FontAwesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

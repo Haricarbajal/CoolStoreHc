@@ -1,4 +1,4 @@
-#botones-paginas:popover-open{
+#botones-paginas:popover-open {
     width: 9vw;
     border-radius: 1rem;
     padding: 1rem;
@@ -9,7 +9,7 @@
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-#colores:popover-open{
+#colores:popover-open {
     width: 9vw;
     border-radius: 1rem;
     padding: 1rem;
@@ -20,7 +20,7 @@
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-#camaras:popover-open{
+#camaras:popover-open {
     width: 9vw;
     border-radius: 1rem;
     padding: 1rem;
@@ -30,3 +30,121 @@
     top: 76px;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
+
+#carrito-compras:popover-open {
+    width: 35vw;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: absolute;
+    inset: unset;
+    right: 80px;
+    top: 76px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+#detalles:popover-open {
+    width: 13vw;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: absolute;
+    inset: unset;
+    right: 43.5%;
+    top: 61%;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.articulos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70px;
+    padding: 300px;
+    padding-top: 12%;
+}
+
+@media (max-width: 1020px) {
+    .articulos-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .articulos-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    #carrito-compras:popover-open {
+        width: 75vw;
+        border-radius: 1rem;
+        padding: 1rem;
+        position: absolute;
+        inset: unset;
+        right: 60px;
+        top: 76px;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    #botones-paginas:popover-open {
+        width: 20vw;
+        border-radius: 1rem;
+        padding: 1rem;
+        position: absolute;
+        inset: unset;
+        left: 55px;
+        top: 40px;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    #colores:popover-open {
+        width: 22vw;
+        border-radius: 1rem;
+        padding: 1rem;
+        position: absolute;
+        inset: unset;
+        left: 120px;
+        top: 60px;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+    
+    #camaras:popover-open {
+        width: 22vw;
+        border-radius: 1rem;
+        padding: 1rem;
+        position: absolute;
+        inset: unset;
+        left: 130px;
+        top: 76px;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    
+
+
+
+    /*index boton-articulos*/
+}
+
+
+
+.text-shadow-3d {
+    text-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.6),  /* Sombra más pronunciada */
+        0px 0px 25px rgba(0, 0, 0, 0.4),  /* Brillo adicional para mayor efecto */
+        0px 0px 15px rgba(255, 255, 255, 0.7); /* Resplandor blanco para hacer que parezca que sale */
+    transform: translateY(-5px);  /* Levanta el texto para el efecto 3D */
+    animation: textMove 1s ease-in-out infinite;  /* Animación para movimiento sutil */
+}
+
+/* Animación para hacer que el texto se mueva ligeramente */
+@keyframes textMove {
+    0% {
+        transform: translateY(-5px); /* Inicio del movimiento */
+    }
+    50% {
+        transform: translateY(5px);  /* Baja un poco el texto para dar la sensación de profundidad */
+    }
+    100% {
+        transform: translateY(-5px); /* Regresa al estado original */
+    }
+}
+
+

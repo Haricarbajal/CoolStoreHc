@@ -4,10 +4,50 @@
     <link rel="stylesheet" href="styles/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<div class="flex justify-between bg-white p-4 w-5/5 h-24 bg-gray-500  shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
-    <button popovertarget="botones-paginas" class="text-3xl">🧱</button>
+<div
+    class="flex justify-between items-center bg-white p-4 w-full h-24 bg-gray-500 shadow-[0_5px_45px_-25px_rgba(0,0,0,0.3)]">
+    <button popovertarget="botones-paginas" class="text-3xl">≡</button>
     <a href="coolStore.html" class="text-3xl">Cool Store🛍️</a>
-    <h1 class="text-5xl">🛒</h1>
+    <div class="relative inline-block">
+        <h1
+            class="contador absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+            0
+        </h1>
+        <button popovertarget="carrito-compras" class="text-5xl mb-[20px]">🛒</button>
+    </div>
+
+    <div popover id="carrito-compras" class="max-h-44 overflow-y-scroll">
+        <custom-carrito>
+            <template id="template-carrito">
+                <li class="list-none">
+                    <div class="flex items-center bg-gray-100 p-4 border rounded-md">
+                        <!-- Imagen a la izquierda -->
+                        <div class="flex-shrink-0">
+                            <img class="imagen-carrito w-24 h-auto object-cover rounded-md"
+                                src="https://i0.wp.com/viciados.net/wp-content/uploads/2023/05/PlayStation_5_PSP_PS_Vita_2_Console_Portatil_Sony_PS5_2023.webp"
+                                alt="Producto">
+                        </div>
+
+                        <!-- Contenedor de descripción -->
+                        <div class="contenedor-descripcion flex flex-col justify-between ml-4 w-full">
+                            <!-- Título y precio -->
+                            <div>
+                                <h1 class="titulo text-lg font-semibold mb-2">Nombre del Producto</h1>
+                                <h1 class="precio text-sm text-gray-600">Precio: $100.00</h1>
+                            </div>
+
+                            <!-- Botón eliminar -->
+                            <button
+                                class="boton-eliminar mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
+                                ELIMINAR
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </template>
+            <ul id="resultados"></ul>
+        </custom-carrito>
+    </div>
     <div popover id="botones-paginas">
         <ul>
             <li>
@@ -66,62 +106,44 @@
                     </ul>
                 </div>
             </li>
-            <li>
-                <button popovertarget="camaras">Camara</button>
-                <div popover id="camaras">
-                    <ul>
-                        <li>
-                            <a href="Camara/5mp.html">5MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/8mp.html">8MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/2mp.html">12MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/3mp.html">13MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/4mp.html">14MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/6mp.html">16MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/0mp.html">20MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/1mp.html">21MP</a>
-                        </li>
-                        <li>
-                            <a href="Camara/8mp.html">48MP</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <a href="technology.html">Technology</a>
-            </li>
-            <li>
-                <a href="entertainment.html">Entertainment</a>
-            </li>
         </ul>
     </div>
 </div>
 <custom-article>
-    <div class="h-screen flex items-center justify-center flex-col">
-        <img class="imagen w-96" src="" alt="">
-        <h1 class="Descricion text-4xl">Descripcion</h1>
-        <h1 class="precio text-4xl">Precio.💶 : </h1>
-        <h1 class="caracteristicas text-4xl">Caracteristicas 📲</h1>
-        <h1 class="color text-4xl">Color🎨 : </h1>
-        <h1 class="camara text-4xl">Camara📷 : </h1>
-        <h1 class="flight-time text-4xl">Filght time✈️ : </h1>
-        <h1 class="range text-4xl">Range🪙 : </h1>
+    <!-- Fondo con imagen -->
+    <div class="min-h-screen flex items-center justify-center p-8 bg-cover bg-center bg-no-repeat"
+        style="background-image: url('imagenes/fondo-articulo.jpg');">
+        <div
+            class="bg-white bg-opacity-80 p-8 rounded-lg shadow-xl w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Imagen a la izquierda -->
+            <div class="flex justify-center items-center">
+                <img class="imagen w-full max-w-sm h-auto object-cover rounded-lg shadow-md" src="" alt="Producto">
+            </div>
+            <!-- Características a la derecha -->
+            <div class="flex flex-col justify-center items-center text-center space-y-4">
+                <h1 class="Descricion text-3xl font-bold">Descripción</h1>
+                <h1 class="precio text-xl">Precio 💶: <span class="text-blue-600 font-bold"></span></h1>
+                <h1 class="caracteristicas text-2xl font-semibold">Características 📲:</h1>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li class="color">Color 🎨: <span class="text-blue-600 font-bold"></span></li>
+                    <li class="camara">Cámara 📷: <span class="text-blue-600 font-bold"></span></li>
+                    <li class="flight-time">Tiempo de vuelo ✈️: <span class="text-blue-600 font-bold"></span></li>
+                    <li class="range">Alcance 🪙: <span class="text-blue-600 font-bold"></span></li>
+                    <button id=""
+                        class="comprar mb-2 self-center bg-blue-500 text-black px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors duration-300">Comprar</button>
+                </ul>
+            </div>
+        </div>
     </div>
 </custom-article>
+
 <script>
+    const customCard = document.querySelector('custom-carrito');
+    let contador = parseInt(localStorage.getItem("contador") || 0)
+    console.log(contador);
+    const numeroAumentar = document.querySelector('.contador');
+
+
     const getId = () => {
         const searchParams = new URLSearchParams(location.search.slice(1));
         return Number(searchParams.get('id'));
@@ -156,14 +178,19 @@
             const camara = this.querySelector('.camara');
             const flight_time = this.querySelector('.flight-time');
             const range = this.querySelector('.range');
-            const id = getId(); // Obtiene el ID de la URL
-            console.log(id);
-            // Usa `find` para buscar el artículo con el ID deseado
+            const id = getId(); // Obtiene el ID de la URL            
+            const boton_comprar = this.querySelector('.comprar');
+
+            // console.log(id);
+
+
+            //bau   
             const selectedArticle = articles.find((item) => item.id === id);
 
 
             if (selectedArticle) {
-                console.log("Artículo encontrado:", selectedArticle);
+
+                // console.log("Artículo encontrado:", selectedArticle);
                 // Aquí puedes renderizar o procesar el artículo encontrado
                 imagen.src = selectedArticle.image
                 precio.innerHTML += selectedArticle.price;
@@ -171,14 +198,107 @@
                 camara.innerHTML += selectedArticle.features[1].value;
                 flight_time.innerHTML += selectedArticle.features[2].value;
                 range.innerHTML += selectedArticle.features[3].value;
+                boton_comprar.id = id;
+                numeroAumentar.textContent = contador;
             } else {
                 console.log(`No se encontró ningún artículo con ID: ${id}`);
             }
+
+            boton_comprar.addEventListener("click", element => {
+                contador++;
+                localStorage.setItem('contador', contador)
+                numeroAumentar.textContent = contador;
+                let productos = JSON.parse(localStorage.getItem("productos")) || [];
+                productos.push({
+                    id: selectedArticle.id,
+                    image: selectedArticle.image,
+                    title: selectedArticle.title,
+                    price: selectedArticle.price
+                });
+                localStorage.setItem("productos", JSON.stringify(productos));
+                    console.log("se agrego el dron");
+                    console.log(localStorage.getItem("productos"))
+
+                    console.log(productos)
+
+                    if (customCard) {
+                        customCard.añadirPopover();
+                    }
+            })
         }
 
     }
 
     customElements.define('custom-article', CustomArticle);
+
+    class Carrito extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.añadirPopover();
+        }
+
+        añadirPopover() {
+            const elementos = JSON.parse(localStorage.getItem("productos") || "[]");
+            const resultados = this.querySelector('#resultados');
+            resultados.innerHTML = '';  // Limpiar el carrito antes de añadir los productos.
+
+            const template = this.querySelector("#template-carrito").content;
+
+            elementos.forEach(elemento => {
+                const lista = template.querySelector("li").cloneNode(true);
+                lista.querySelector('.imagen-carrito').src = elemento.image;
+                lista.querySelector('.titulo').textContent = elemento.title;
+                lista.querySelector('.precio').textContent = elemento.price;
+
+                // Asignar un `data-id` al botón de eliminar para poder identificar el producto
+                const botonEliminar = lista.querySelector('.boton-eliminar');
+                botonEliminar.setAttribute('data-id', elemento.id);
+
+                // Añadir el producto al carrito en el DOM
+                resultados.appendChild(lista);
+
+                // Agregar el evento de eliminación para este botón de eliminar
+                botonEliminar.addEventListener("click", (event) => {
+                    contador--;
+                    if (contador <= 0) {
+                        contador = 0
+                        alert("el carrito esta vacio")
+                    }
+                    numeroAumentar.textContent = contador
+                    localStorage.setItem("contador", contador)
+                    const productoId = event.target.getAttribute('data-id');  // Obtener el ID del producto a eliminar
+                    this.eliminarDelCarrito(productoId, lista);
+                });
+            });
+        }
+
+        eliminarDelCarrito(productoId, lista) {
+            let productos = JSON.parse(localStorage.getItem("productos") || "[]");
+
+            for (let i = 0; i < productos.length; i++) {
+                if (productos[i].id == productoId) {
+                    productos.splice(i, 1);
+                    console.log("Producto eliminado del array");
+                    break;
+                }
+            }
+
+
+            localStorage.setItem("productos", JSON.stringify(productos));
+
+            // Elimina el producto del DOM
+            lista.remove();
+
+
+
+            console.log("Producto eliminado con éxito");
+        }
+    }
+
+    customElements.define('custom-carrito', Carrito);
 </script>
 
 </html>
